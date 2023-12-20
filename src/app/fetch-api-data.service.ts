@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/internal/operators';
+import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-const apiUrl = 'https://marvel-movie-mapper-0064171d8b92.herokuapp.com/movies';
+const apiUrl = 'https://marvel-movie-mapper-0064171d8b92.herokuapp.com/';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +15,13 @@ export class UserRegistrationServices {
   constructor(private http: HttpClient) { }
 
   public userRegistration(userDetails: any): Observable<any> {
-    console.log(userDetails);
     return this.http.post(apiUrl + 'users', userDetails).pipe(
       catchError(this.handleError)
     );
   }
 
   public userLogin(userDetails: any): Observable<any> {
-    return this.http.post(apiUrl + 'login' + new URLSearchParams(userDetails), {}).pipe(
+    return this.http.post(apiUrl + 'login', userDetails).pipe(
       catchError(this.handleError)
     );
   }
@@ -142,8 +141,8 @@ export class UserRegistrationServices {
     }).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
-    ),
-}
+    );
+  }
 
   //edit the users info
   editUser(userID: string): Observable<any> {
@@ -184,8 +183,6 @@ export class UserRegistrationServices {
       catchError(this.handleError)
     );
   }
-
-
 
   //non-typed response extraction
   private extractResponseData(res: Object): any {

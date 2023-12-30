@@ -145,12 +145,15 @@ export class UserRegistrationServices {
   }
 
   //edit the users info
-  editUser(userID: string): Observable<any> {
+  editUser(updatedUser: any): Observable<any> { //do I need the userData to be passed
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const userID = user._id;
     const token = localStorage.getItem('token');
-    return this.http.put(apiUrl + 'users/:' + userID, {
+    return this.http.put(apiUrl + 'users/' + userID, updatedUser, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
+          'Content-Type': 'application/json',
         })
     }).pipe(
       map(this.extractResponseData),
@@ -171,9 +174,9 @@ export class UserRegistrationServices {
     );
   }
   //delete a user
-  deleteUser(userID: string): Observable<any> {
+  deleteUser(): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.delete(apiUrl + 'users/:' + userID, {
+    return this.http.delete(apiUrl + 'users/', {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,

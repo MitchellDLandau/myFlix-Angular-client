@@ -1,0 +1,28 @@
+<div mat-card class="form-wrapper">
+    <div mat-card-content class="form">
+        <div mat-form-field class="form-item">
+            <legend>Username: {{userData.Username}}</legend>
+        </div>
+        <div mat-form-field class="form-item">
+            <legend>Email: {{userData.Email}}</legend>
+        </div>
+        <div>
+            <legend>Birthdate: {{userData.Birthday}}</legend>
+        </div>
+        <button mat-raised-button (click)="openProfileUpdateDialog()" color="primary">
+            Update User
+        </button>
+    </div>
+    <div class="favMovies">
+        <p class="favMovies-title">{{ userData.Username }}'s Favorite Movies</p>
+        <div *ngIf="favoriteMovies.length">
+            <div *ngFor="let favoriteMovie of favoriteMovies" class="favMovies-item">
+                {{ favoriteMovie.Title }}
+                <img src={{favoriteMovie.ImagePath}} alt={{favoriteMovie.Title}} style="width: 200px;" />
+                <!-- <button (click)="removeFavoriteMovie(favoriteMovie._id)" mat-raised-button color="primary">
+                    unfavorite
+                </button> -->
+            </div>
+        </div>
+    </div>
+</div>

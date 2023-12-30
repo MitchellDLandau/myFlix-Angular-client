@@ -176,15 +176,19 @@ export class UserRegistrationServices {
   //delete a user
   deleteUser(): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.delete(apiUrl + 'users/', {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const userID = user._id;
+    return this.http.delete(apiUrl + 'users/' + userID, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
-        })
-    }).pipe(
-      map(this.extractResponseData),
-      catchError(this.handleError)
-    );
+        }),
+      responseType: 'text',
+    })
+      .pipe(
+        map(this.extractResponseData),
+        catchError(this.handleError)
+      );
   }
 
   //non-typed response extraction

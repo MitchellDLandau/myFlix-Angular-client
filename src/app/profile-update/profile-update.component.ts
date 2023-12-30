@@ -93,6 +93,7 @@ export class ProfileUpdateComponent implements OnInit {
       })
       localStorage.clear();
       this.router.navigate(['welcome']);
+      window.location.reload();
     });
   };
 }

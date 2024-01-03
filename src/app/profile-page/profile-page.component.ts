@@ -81,4 +81,8 @@ export class ProfilePageComponent {
       console.error('User or user\'s favorite movies are undefined or not an array.');
     }
   }
+
+  removeFavoriteMovie(): void {
+
+  }
 }

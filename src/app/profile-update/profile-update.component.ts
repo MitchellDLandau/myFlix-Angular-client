@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UserRegistrationServices } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -39,6 +39,8 @@ export class ProfileUpdateComponent implements OnInit {
     Username: '', Password: '', Email: '',
     Birthday: null as Date | null,
   };
+
+  @ViewChild('confirmationModal') confirmationModal!: ElementRef;
 
   constructor(
     public fetchApiData: UserRegistrationServices,
@@ -82,18 +84,21 @@ export class ProfileUpdateComponent implements OnInit {
   }
 
   removeUser(): void {
-    const userID = this.user._id;
-    if (!userID) {
-      console.error('You cannot perform this function');
-      return;
+    const confirmation = window.confirm('Are you sure you want to delete your profile?');
+
+    if (confirmation) {
+      this.deleteUser();
     }
+  }
+
+  private deleteUser(): void {
     this.fetchApiData.deleteUser().subscribe(() => {
       this.snackBar.open('Profile successfully deleted', 'OK', {
         duration: 2000,
-      })
+      });
       localStorage.clear();
       this.router.navigate(['welcome']);
       window.location.reload();
     });
-  };
+  }
 }

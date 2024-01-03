@@ -28,6 +28,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ProfileUpdateComponent } from './profile-update/profile-update.component';
+import { MoreInfoComponent } from './more-info/more-info.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
     NavigationComponent,
     MainPageComponent,
     ProfileUpdateComponent,
+    MoreInfoComponent,
   ],
   imports: [
     BrowserModule,

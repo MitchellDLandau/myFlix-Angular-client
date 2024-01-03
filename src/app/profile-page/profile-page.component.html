@@ -1,3 +1,4 @@
+<app-navigation></app-navigation>
 <div mat-card class="form-wrapper">
     <div mat-card-content class="form">
         <div mat-form-field class="form-item">
@@ -19,9 +20,6 @@
             <div *ngFor="let favoriteMovie of favoriteMovies" class="favMovies-item">
                 {{ favoriteMovie.Title }}
                 <img src={{favoriteMovie.ImagePath}} alt={{favoriteMovie.Title}} style="width: 200px;" />
-                <!-- <button (click)="removeFavoriteMovie(favoriteMovie._id)" mat-raised-button color="primary">
-                    unfavorite
-                </button> -->
             </div>
         </div>
     </div>

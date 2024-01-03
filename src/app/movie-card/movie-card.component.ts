@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { UserRegistrationServices } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { MoreInfoComponent } from '../more-info/more-info.component';
 
 @Component({
@@ -15,8 +15,7 @@ export class MovieCardComponent {
   constructor(
     public fetchApiData: UserRegistrationServices,
     public snackBar: MatSnackBar,
-    // private dialog: MatDialog,
-    // @Inject(MAT_DIALOG_DATA) public data: any
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -30,14 +29,32 @@ export class MovieCardComponent {
     });
   }
 
-  // openGenre(Genre: any): void {
-  //   this.dialog.open(MoreInfoComponent, {
-  //     data: {
-  //       Title: Genre.Name,
-  //       content: Genre.Description,
-  //     }
-  //   })
-  // }
+  openGenre(Genre: any): void {
+    this.dialog.open(MoreInfoComponent, {
+      data: {
+        Title: Genre.Name,
+        content: Genre.Description,
+      }
+    })
+  }
+
+  openDirector(Director: any): void {
+    this.dialog.open(MoreInfoComponent, {
+      data: {
+        Title: Director.Name,
+        content: Director.Bio,
+      }
+    })
+  }
+
+  openDescription(movie: any): void {
+    this.dialog.open(MoreInfoComponent, {
+      data: {
+        Title: movie.Title,
+        content: movie.Description,
+      }
+    })
+  }
 
   isFavorite(movieID: string): boolean {
     const userString = localStorage.getItem('user');

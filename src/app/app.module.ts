@@ -20,7 +20,6 @@ import { UserLoginFormComponent } from './user-login-form/user-login-form.compon
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
-import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MainPageComponent } from './main-page/main-page.component';
@@ -45,7 +44,6 @@ const appRoutes: Routes = [
     MovieCardComponent,
     WelcomePageComponent,
     ProfilePageComponent,
-    MovieDetailsComponent,
     NavigationComponent,
     MainPageComponent,
     ProfileUpdateComponent,

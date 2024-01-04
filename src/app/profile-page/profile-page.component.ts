@@ -3,18 +3,23 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserRegistrationServices } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 import { ProfileUpdateComponent } from '../profile-update/profile-update.component';
 
 type User = {
-  _id?: string, Username?: string, Password?: string,
+  _id?: string,
+  Username?: string,
+  Password?: string,
   Email?: string,
-  Birthday?: Date | null, FavoriteMovies?: any[]
+  Birthday?: string,
+  FavoriteMovies?: any[]
 };
 
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.scss',
+  providers: [DatePipe],
 })
 
 export class ProfilePageComponent {
@@ -23,14 +28,15 @@ export class ProfilePageComponent {
 
   @Input() userData = {
     Username: '', Password: '', Email: '',
-    Birthday: null as Date | null,
+    Birthday: '' as string | null
   };
 
   constructor(
     public fetchApiData: UserRegistrationServices,
     public router: Router,
     public snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private datePipe: DatePipe,
   ) { }
 
   ngOnInit(): void {
@@ -49,7 +55,7 @@ export class ProfilePageComponent {
       Username: user.Username || '',
       Password: '',
       Email: user.Email || '',
-      Birthday: user.Birthday || null,
+      Birthday: this.datePipe.transform(user.Birthday, 'MM-dd-yyyy')! || null,
     }
   }
 

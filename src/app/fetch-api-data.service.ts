@@ -189,8 +189,6 @@ export class UserRegistrationServices {
           const updatedFavoriteMovies = user.FavoriteMovies?.filter((id: string) => id !== movieID);
           user.FavoriteMovies = updatedFavoriteMovies;
           localStorage.setItem('user', JSON.stringify(user));
-          console.log("Updated favorites", updatedFavoriteMovies);
-          console.log('User', user);
           return of("success");
         } else {
           // Treat other errors as actual errors

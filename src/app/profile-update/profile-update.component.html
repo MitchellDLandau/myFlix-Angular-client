@@ -1,7 +1,6 @@
-<app-navigation></app-navigation>
 <mat-card>
     <mat-card-header>
-        <mat-card-title>Sign Up!</mat-card-title>
+        <mat-card-title>Update your profile</mat-card-title>
     </mat-card-header>
     <mat-card-content>
         <form>
@@ -16,7 +15,7 @@
             <mat-form-field>
                 <input matInput [(ngModel)]="userData.Email" placeholder="Email" type="email" name="Email" required>
             </mat-form-field>
-            <mat-form-field>
+            <mat-form-field class="birthday-picker">
                 <input matInput [matDatepicker]="birthdayPicker" placeholder="Select your birthday" type="birthday"
                     name="Birthday" required [(ngModel)]="userData.Birthday">
                 <mat-datepicker-toggle matSuffix [for]="birthdayPicker"></mat-datepicker-toggle>
@@ -25,10 +24,10 @@
         </form>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button (click)="editUser()" color="primary">
+        <button class="button" mat-raised-button (click)="editUser()">
             Update User
         </button>
-        <button mat-raised-button (click)="removeUser()" color="primary">
+        <button class="button" mat-raised-button (click)="removeUser()">
             Delete User
         </button>
     </mat-card-actions>

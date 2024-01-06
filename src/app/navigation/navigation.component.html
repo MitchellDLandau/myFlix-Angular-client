@@ -1,11 +1,19 @@
 <mat-toolbar class="navigation">
-    <a routerLink="/movies">
-        <h1>Marvel Movie Mapper</h1>
-    </a>
-    <a routerLink="/profile">
-        Profile
-    </a>
-    <button mat-raised-button aria-label="Logout" (click)="logoutUser()">
-        Logout
-    </button>
+    <mat-toolbar-row>
+        <div fxFlex="75" fxLayout="row">
+            <img class="main-page-home" src="../../icons/avengers.png" alt="Movie Mapper Logo" (click)="mainPage()">
+        </div>
+        <div class="profile-logout" fxFlex="25" fxLayout="row">
+            <div>
+                <button class="button" mat-raised-button (click)="profileView()">
+                    Profile
+                </button>
+            </div>
+            <div>
+                <button class="button" mat-raised-button aria-label="Logout" (click)="logoutUser()">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </mat-toolbar-row>
 </mat-toolbar>

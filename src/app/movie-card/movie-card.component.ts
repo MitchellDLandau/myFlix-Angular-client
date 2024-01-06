@@ -78,7 +78,6 @@ export class MovieCardComponent {
     if (this.isFavorite(movieID)) {
       // Remove from favorites
       this.fetchApiData.deleteFavorite(userName, movieID).subscribe((resp: any) => {
-        console.log('Movie removed from favorites:', resp);
         this.snackBar.open('Removed from favorites!', 'OK', {
           duration: 2000
         });
@@ -86,7 +85,6 @@ export class MovieCardComponent {
     } else {
       // Add to favorites
       this.fetchApiData.addFavoriteMovie(userName, movieID).subscribe((resp: any) => {
-        console.log('Movie added to favorites:', resp);
         this.snackBar.open('Added to favorites!', 'OK', {
           duration: 2000
         });

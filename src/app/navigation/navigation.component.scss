@@ -1,0 +1,42 @@
+@import '../../styles.scss';
+
+.navigation {
+    background-color: $navigation-color;
+}
+
+button.button {
+    background-color: $button-color;
+
+    &:hover {
+        background-color: $button-glow;
+    }
+}
+
+.main-page-home {
+    width: 70%;
+    height: 70%;
+    object-fit: cover;
+    margin-top: 3%;
+    border-radius: 5% 5%;
+    max-width: 150px;
+    height: auto;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.mat-toolbar-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mat-toolbar-row .profile-logout {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mat-toolbar-row .profile-logout button {
+    margin-left: 8px;
+}

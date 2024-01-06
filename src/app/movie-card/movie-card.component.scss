@@ -1,0 +1,34 @@
+@import '../../styles.scss';
+
+.movie-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    flex-wrap: wrap;
+    background-color: $primary-color;
+}
+
+.card-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: $card-color;
+    border-color: $border-color;
+    transition: transform 0.3s ease;
+    border-radius: 5%;
+    max-width: 275px;
+
+    &:hover {
+        transform: scale(1.05);
+        background-color: $card-glow;
+    }
+}
+
+.center-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

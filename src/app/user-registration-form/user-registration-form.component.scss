@@ -1,0 +1,27 @@
+@import '../../styles.scss';
+
+mat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $card-color;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.birthday-picker {
+    width: 212px;
+    padding: 16px;
+}
+
+button {
+    background-color: $button-color;
+
+    &:hover {
+        background-color: $button-glow;
+    }
+}

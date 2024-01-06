@@ -1,26 +1,50 @@
 <app-navigation></app-navigation>
-<div mat-card class="form-wrapper">
-    <div mat-card-content class="form">
-        <div mat-form-field class="form-item">
-            <legend>Username: {{userData.Username}}</legend>
-        </div>
-        <div mat-form-field class="form-item">
-            <legend>Email: {{userData.Email}}</legend>
-        </div>
-        <div>
-            <legend>Birthdate: {{userData.Birthday}}</legend>
-        </div>
-        <button mat-raised-button (click)="openProfileUpdateDialog()" color="primary">
-            Update User
-        </button>
-    </div>
-    <div class="favMovies">
-        <p class="favMovies-title">{{ userData.Username }}'s Favorite Movies</p>
-        <div *ngIf="favoriteMovies.length">
-            <div *ngFor="let favoriteMovie of favoriteMovies" class="favMovies-item">
-                {{ favoriteMovie.Title }}
-                <img src={{favoriteMovie.ImagePath}} alt={{favoriteMovie.Title}} style="width: 200px;" />
+<div class="profile-page-orientation">
+    <div mat-card class="form-wrapper">
+        <mat-card class="profile-info">
+            <div mat-form-field class="form-item">
+                <h3>Username: {{userData.Username}}</h3>
             </div>
+            <div mat-form-field class="form-item">
+                <h3>Email: {{userData.Email}}</h3>
+            </div>
+            <div>
+                <h3>Birthdate: {{userData.Birthday | date: 'MM-dd-yyyy' }}</h3>
+            </div>
+            <button class="button" mat-raised-button (click)="openProfileUpdateDialog()">
+                Update User
+            </button>
+        </mat-card>
+    </div>
+    <div class="fav-movies">
+        <!-- Need to make each image show as a single movie card -->
+        <div class="favorite-title">
+            <h1>{{ userData.Username }}'s Favorite Movies</h1>
+        </div>
+        <div class="movie-card" *ngIf="favoriteMovies.length">
+            <mat-card class="card-items" *ngFor="let favoriteMovie of favoriteMovies">
+                <div class="favorite-movie-item">
+                    <mat-card-header>
+                        <mat-card-title>{{favoriteMovie.Title}}</mat-card-title>
+                        <mat-card-subtitle>Directed by: {{favoriteMovie.Director.Name}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <img src={{favoriteMovie.ImagePath}} alt={{favoriteMovie.Title}} style="width: 200px;" />
+                    <mat-card-actions>
+                        <button mat-button color="primary" (click)="openGenre(favoriteMovie.Genre)">
+                            Phase
+                        </button>
+                        <button mat-button color="primary" (click)="openDirector(favoriteMovie.Director)">
+                            Director
+                        </button>
+                        <button mat-button color="primary" (click)="openDescription(favoriteMovie)">
+                            Description
+                        </button>
+                        <mat-icon (click)="toggleFavorite(favoriteMovie._id)">
+                            {{ isFavorite(favoriteMovie._id) ? 'favorite' : 'favorite_border' }}
+                        </mat-icon>
+                    </mat-card-actions>
+                </div>
+            </mat-card>
         </div>
     </div>
 </div>

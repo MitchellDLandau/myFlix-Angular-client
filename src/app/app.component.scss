@@ -1,12 +1,14 @@
-.main-page-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@import '../styles.scss';
 
-}
+// .main-page-container {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     background-color: $primary-color;
+// }
 
-.main-page-buttons {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-}
+// .main-page-buttons {
+//     display: flex;
+//     justify-content: center;
+//     flex-direction: row;
+// }
